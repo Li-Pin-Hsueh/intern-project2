@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="mix.css">
+    <link rel="icon" href="images/favicon_48.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Sweet taste</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-white">
+        <div class="container">
+            <button class="navbar-toggler d-md-none d-flex align-items-center" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="material-icons">
+                    menu
+                </i>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo-all-dark.svg" width="220" height="40" alt="" class="d-none d-md-inline-block">
+                <img src="images/logotype-sm-dark.svg" width="114" height="18" alt="" class="d-inline-block d-md-none">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">甜點</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="register.html">登入</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="carts.html">購車</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container my-lg-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="bg-primary text-white p-3">
+                    <div class="form-row mb-3">
+                        <div class="col-6">
+                            <span class="h1">發票</span>
+                        </div>
+                        <div class="col-6"></div>
+                    </div>
+                    <nav class="nav nav-pills nav-fill nav-dark mb-5">
+                        <a class="nav-item nav-link py-3 h4 active" href="#">電子發票</a>
+                        <a class="nav-item nav-link py-3 h4 text-white" href="#">郵寄發票</a>
+                    </nav>
+                    <div class="form-group">
+                        <label for="email" class="h4">電子郵件信箱</label>
+                        <input type="text" class="form-control form-control-lg" id="email"
+                            placeholder="hello@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="tno" class="h4">統一編號(選填)</label>
+                        <input type="text" id="tno" class="form-control form-control-lg" placeholder="123">
+                    </div>
+                </div>
+                <a type="button" href="success.html" class="btn btn-yellow btn-lg btn-block">下一步</a>
+            </div>
+            <div class="col-lg-4 d-none d-lg-block text-primary-light">
+                <div class="card mb-3">
+                    <div class="card-header text-center bg-primary-lighter">
+                        <div class="h3">訂單摘要</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>小計</span>
+                            <span>NT$ 2700</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>運費</span>
+                            <span>NT$ 300</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="h4">總計</span>
+                            <strong class="h4">NT$ 3000</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-primary-lighter">
+                    <div class="card-header text-center bg-primary-lighter">
+                        <div class="h3">購物清單</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="cart-image cart-image-sm mr-3"
+                                style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=ce7267675921fc7e41b5610f49750a40&amp;auto=format&amp;fit=crop&amp;w=685&amp;q=80)">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-fill mr-lg-4 text-primary-light">
+                                    <span class="h5">抹茶馬卡龍 (2)</span><br>
+                                    <span>NT$ 450</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-3">
+                            <div class="cart-image cart-image-sm mr-3"
+                                style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=ce7267675921fc7e41b5610f49750a40&amp;auto=format&amp;fit=crop&amp;w=685&amp;q=80)">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-fill mr-lg-4 text-primary-light">
+                                    <span class="h5">抹茶馬卡龍 (2)</span><br>
+                                    <span>NT$ 450</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-3">
+                            <div class="cart-image cart-image-sm mr-3"
+                                style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=ce7267675921fc7e41b5610f49750a40&amp;auto=format&amp;fit=crop&amp;w=685&amp;q=80)">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-fill mr-lg-4 text-primary-light">
+                                    <span class="h5">抹茶馬卡龍 (2)</span><br>
+                                    <span>NT$ 450</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="py-4 bg-primary">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-md-5 d-flex align-items-center justify-content-center justify-content-md-start mb-md-0 mb-3"
+                    style="color: white;">
+                    <img src="images/logo-light.svg" width="40" height="40" alt="">
+                    <span class="h4 ml-3">訂閱你我的甜蜜郵件</span>
+                </div>
+                <div class="col-md-5 justify-content-center d-flex">
+                    <form class="form-inline flex-fill my-2 my-lg-0">
+                        <input class="form-control flex-fill py-3 mr-0" type="search" placeholder="Email"
+                            aria-label="Search" style="height: 64px;">
+                        <button class="btn btn-yellow btn-lg d-flex align-items-center" style="height: 64px;">
+                            <i class="material-icons">
+                                arrow_forward
+                            </i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-primary-lighter py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5 d-flex flex-column justify-content-between">
+                    <div> <img class="mb-5" src="images/logotype-sm-dark.svg" height="27" alt=""> </div>
+                    <ul class="list-unstyled mt-5 ">
+                        <li>07-1234-5678</li>
+                        <li><a href="#">sweetaste@email.com</a></li>
+                        <li>800 高雄市新興區幸福路 520 號</li>
+                    </ul>
+                </div>
+                <div class="col-md-5 text-right d-none d-md-block">
+                    <img src="images/sm-今天是個吃甜點的好日子.svg" width="60" alt="">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-5">
+                    <img src="images/ic-line@.svg" height="32" width="32" alt="">
+                    <img src="images/ic-facebook.svg" height="32" width="32" alt="">
+                </div>
+                <div class="col-md-5 text-md-right mt-2">
+                    © 2018 Sweetaste* All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
