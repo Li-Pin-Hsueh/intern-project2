@@ -47,9 +47,9 @@
               <h5 class="card-title">{{ product.name }}</h5><p>剩餘:{{ product.inventory }}</p>
               <p class="card-text"><strong class="d-flex justify-content-end">NT ${{ product.price }}</strong></p>
           </div>
-          <a href="#" class="h4 mb-0 btn-primary-lighter card-footer d-flex justify-content-center">
+          <button class="h4 mb-0 btn-primary-lighter card-footer d-flex justify-content-center" (click)="addToCart(product)">
               加入購物車
-          </a>
+          </button>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
 import { Product } from './../product';
 import { Component, Input, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class IndexComponent implements OnInit {
 
   selectedType = 'daily'
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+        private cartService : CartService) { }
 
   ngOnInit(): void {
     this.getProductsByType(this.selectedType);
@@ -27,5 +29,10 @@ export class IndexComponent implements OnInit {
 
     console.log(this.topItems) ;
   }
+
+  addToCart(product) {
+    this.cartService.addToCart(product) ;
+  }
+
 
 }

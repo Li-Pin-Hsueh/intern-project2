@@ -1,3 +1,4 @@
+import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
 import { Product } from './../product';
 import { Component, OnInit } from '@angular/core';
@@ -5,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
 
@@ -22,7 +23,8 @@ export class ProductsComponent implements OnInit {
   countOfNewProducts: number ;
 
   totalPage : number ;
-  constructor( private productService: ProductService) { }
+  constructor( private productService: ProductService,
+        private cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -86,6 +88,10 @@ export class ProductsComponent implements OnInit {
 
     // change the data prepared to show
     this.productsForPage = this.productsOfType.slice( (p-1)*4, (p-1)*4+4 );
+  }
+
+  addToCart(product) {
+    this.cartService.addToCart(product) ;
   }
 
 
