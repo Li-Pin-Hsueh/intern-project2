@@ -15,9 +15,14 @@ export class ProductsComponent implements OnInit {
   countOfHotProducts: number ;
   countOfNewProducts: number ;
 
+  selectedType : string ;
+
   constructor( private productService: ProductService) { }
 
   ngOnInit(): void {
+
+    this.selectedType = 'all' ;
+
     this.productService.getProducts().
       subscribe( products => this.products = products);
 
@@ -31,6 +36,11 @@ export class ProductsComponent implements OnInit {
 
     this.countOfNewProducts = this.products
     .filter( product => product.type.includes('new')).length ;
+  }
+
+  onSelect(type: string): void {
+    this.selectedType = type;
+    console.log("selected type: ", type) ;
   }
 
 }

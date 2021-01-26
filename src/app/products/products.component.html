@@ -12,14 +12,17 @@
       <div class="col-md-4 mb-5">
           <h2 class="bg-primary text-white text-center h4 py-3 mb-0">甜點類別</h2>
           <div class="list-group text-center">
-              <a class="list-group-item list-group-item-action h4 active">
-                  所有甜點({{ products.length}})
-              </a>
-              <a class="list-group-item list-group-item-action h4">
+              <a class="list-group-item list-group-item-action h4" (click)="onSelect('all')"
+              [class.active]="selectedType=='all'">
+                  所有甜點({{ products.length}})</a>
+              <a class="list-group-item list-group-item-action h4" (click)="onSelect('daily')"
+              [class.active]="selectedType=='daily'">
                 本日精選（{{ countOfDailyProducts }}）</a>
-              <a class="list-group-item list-group-item-action h4">
+              <a class="list-group-item list-group-item-action h4" (click)="onSelect('hot')"
+              [class.active]="selectedType=='hot'">
                 人氣推薦（{{ countOfHotProducts }}）</a>
-              <a class="list-group-item list-group-item-action h4">
+              <a class="list-group-item list-group-item-action h4" (click)="onSelect('new')"
+              [class.active]="selectedType=='new'">
                 新品上市（{{ countOfNewProducts }}）</a>
               <a class="list-group-item list-group-item-action h4 disabled">絕版品</a>
           </div>
