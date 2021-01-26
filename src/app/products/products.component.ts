@@ -59,6 +59,7 @@ export class ProductsComponent implements OnInit {
     // change product type
     this.selectedType = type;
     this.currentPage = 1;
+
     // access products of the specific type
     if( type == 'all') this.productsOfType = this.products ;
     else {
@@ -66,11 +67,12 @@ export class ProductsComponent implements OnInit {
         .subscribe( products => this.productsOfType = products ) ;
     }
 
-
+    // refresh display panel
     if(this.productsOfType.length % 4 != 0 ) this.totalPage = Math.floor(this.productsOfType.length/4) + 1 ;
     else this.totalPage = Math.floor(this.productsOfType.length/4) ;
     console.log(this.productsOfType);
 
+    // create a slice of products to show
     if( this.totalPage == 1)
       this.productsForPage = this.productsOfType.slice(0, this.productsOfType.length );
     else
@@ -82,6 +84,7 @@ export class ProductsComponent implements OnInit {
   changePage( p : number ) {
     this.currentPage = p ;
 
+    // change the data prepared to show
     this.productsForPage = this.productsOfType.slice( (p-1)*4, (p-1)*4+4 );
   }
 
