@@ -1,3 +1,4 @@
+import { ProductService } from './../product.service';
 import { Product } from './../product';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -8,19 +9,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  @Input()
   topItems : Product[];
 
   selectedType = 'daily'
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.getProductsByType(this.selectedType);
   }
 
   getProductsByType( type: string ) : void {
     this.selectedType = type ;
     // get topItems through productsService
+    this.productService.getTopItems(type)
+        .subscribe( products => this.topItems = products );
+
+    console.log(this.topItems) ;
   }
 
 }

@@ -6,21 +6,24 @@
       <div class="row no-gutters justify-content-center rectangle-section">
           <div class="col-md-10">
               <div class="row no-gutters">
-                  <a href="#display" class="col-4 rectangle-image-wrap" (click)="getProductsByType('daily')">
+                  <a href="#display" class="col-4 rectangle-image-wrap"
+                  (click)="getProductsByType('daily')" [class.active]="this.selectedType == 'daily'">
                       <span class="rectangle-text">本日精選</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
                           style="background-image: url(https://images.unsplash.com/photo-1504473089979-b1c4993a9653?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=9db69b72e1f7d1b4e5c81cee531108ff&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80)">
                       </div>
                   </a>
-                  <a href="#display" class="col-4 rectangle-image-wrap" (click)="getProductsByType('hot')">
+                  <a href="#display" class="col-4 rectangle-image-wrap"
+                  (click)="getProductsByType('hot')"  [class.active]="this.selectedType == 'hot'">
                       <span class="rectangle-text">人氣推薦</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
                           style="background-image: url(https://images.unsplash.com/photo-1525059337994-6f2a1311b4d4?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=7ce5bbf66bdb4ed3b6965f0b3618aa43&amp;auto=format&amp;fit=crop&amp;w=654&amp;q=80)">
                       </div>
                   </a>
-                  <a href="#display" class="col-4 rectangle-image-wrap" (click)="getProductsByType('new')">
+                  <a href="#display" class="col-4 rectangle-image-wrap"
+                  (click)="getProductsByType('new')"  [class.active]="this.selectedType == 'new'">
                       <span class="rectangle-text">新品上市</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
@@ -99,56 +102,26 @@
 
 <section id="display" class="container my-5 my-md-7">
   <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4" *ngFor="let item of topItems">
           <div class="card mb-5">
               <div class="card-img-top"
-                  style="height: 315px; background-image: url(https://images.unsplash.com/photo-1534073737927-85f1ebff1f5d?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=1204e5551548223af82981f0025984ef&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80);">
+                  style="height: 315px; background-image: url( {{item.imgUrl}} );">
                   <div class="item-tag">
-                      <strong>本日精選</strong>
+                      <strong *ngIf="selectedType=='daily'">本日精選</strong>
+                      <strong *ngIf="selectedType=='hot'">人氣推薦</strong>
+                      <strong *ngIf="selectedType=='new'">新品上市</strong>
+
                   </div>
               </div>
               <div class="card-body">
-                  <h5 class="card-title">焦糖瑪卡隆</h5>
-                  <p class="card-text"><strong class="d-flex justify-content-end">NT $450</strong></p>
+                  <h5 class="card-title">{{ item.name }}</h5>
+                  <p class="card-text"><strong class="d-flex justify-content-end">NT ${{ item.price }}</strong></p>
               </div>
               <a href="#" class="h4 mb-0 btn-primary-lighter card-footer d-flex justify-content-center">
                   加入購物車
               </a>
           </div>
       </div>
-      <div class="col-md-4">
-          <div class="card mb-5">
-              <div class="card-img-top"
-                  style="height: 315px; background-image: url(https://images.unsplash.com/photo-1525059337994-6f2a1311b4d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ce5bbf66bdb4ed3b6965f0b3618aa43&auto=format&fit=crop&w=654&q=80);">
-                  <div class="item-tag">
-                      <strong>本日精選</strong>
-                  </div>
-              </div>
-              <div class="card-body">
-                  <h5 class="card-title">牛奶尬圈</h5>
-                  <p class="card-text"><strong class="d-flex justify-content-end">NT $450</strong></p>
-              </div>
-              <a href="#" class="h4 mb-0 btn-primary-lighter card-footer d-flex justify-content-center">
-                  加入購物車
-              </a>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card">
-              <div class="card-img-top"
-                  style="height: 315px; background-image: url(https://images.unsplash.com/photo-1490474504059-bf2db5ab2348?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0cad6d3de8adbdf6298d4ca5d094f8c6&auto=format&fit=crop&w=1350&q=80);">
-                  <div class="item-tag">
-                      <strong>本日精選</strong>
-                  </div>
-              </div>
-              <div class="card-body">
-                  <h5 class="card-title">奇異果奶</h5>
-                  <p class="card-text"><strong class="d-flex justify-content-end">NT $450</strong></p>
-              </div>
-              <a href="#" class="h4 mb-0 btn-primary-lighter card-footer d-flex justify-content-center">
-                  加入購物車
-              </a>
-          </div>
-      </div>
+
   </div>
 </section>

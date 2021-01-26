@@ -9,10 +9,28 @@ import { Observable, of } from 'rxjs' ;
 })
 export class ProductService {
 
+  products = PRODUCTS ;
+
+
   constructor(  ) { }
 
   getProducts( ): Observable<Product[]> {
 
-    return of(PRODUCTS) ;
+    return of(this.products) ;
+  }
+
+  getTopItems( type: string ) : Observable<Product[]> {
+    const topItems = [];
+    let count = 0 ;
+
+    for( let index=0; index < this.products.length ; index ++){
+      if( this.products[index].type.includes(type) ){
+        topItems.push(this.products[index]) ;
+        count ++ ;
+        if(count == 3) break ;
+      }
+    }
+    return of(topItems);
+
   }
 }
