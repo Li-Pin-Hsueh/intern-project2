@@ -10,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   products : Product[] ;
+  productsOfType : Product[] ;
+
+  selectedType : string ;
   countOfAllProducts : number ;
   countOfDailyProducts: number ;
   countOfHotProducts: number ;
   countOfNewProducts: number ;
 
-  selectedType : string ;
-
+  totalPage : number ;
   constructor( private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -36,11 +38,35 @@ export class ProductsComponent implements OnInit {
 
     this.countOfNewProducts = this.products
     .filter( product => product.type.includes('new')).length ;
+
+    this.productsOfType = this.products ;
+
+    if(this.products.length % 4 != 0 ) this.totalPage = Math.floor(this.products.length/4) + 1 ;
+    else this.totalPage = Math.floor(this.products.length/4) ;
+
+    //this.currentPage = 1 ;
+
   }
 
   onSelect(type: string): void {
+    // change product type
     this.selectedType = type;
-    console.log("selected type: ", type) ;
+
+    // access products of the specific type
+    if( type == 'all') this.productsOfType = this.products ;
+    else {
+      this.productService.getProductsByType(type)
+        .subscribe( products => this.productsOfType = products ) ;
+    }
+
+
+    if(this.productsOfType.length % 4 != 0 ) this.totalPage = Math.floor(this.productsOfType.length/4) + 1 ;
+    else this.totalPage = Math.floor(this.productsOfType.length/4) ;
+    console.log(this.productsOfType);
+
+
   }
+
+
 
 }

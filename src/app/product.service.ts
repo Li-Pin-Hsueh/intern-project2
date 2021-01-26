@@ -33,4 +33,11 @@ export class ProductService {
     return of(topItems);
 
   }
+  getProductsByType( type: string ) : Observable<Product[]> {
+    const products = [];
+
+    return of(this.products.filter( product =>
+      product.type.includes(type)
+      ));
+  }
 }
