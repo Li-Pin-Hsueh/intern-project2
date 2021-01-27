@@ -1,6 +1,4 @@
 
-<li *ngFor="let product of products">{{ product.name }}</li>
-
 <section class="container">
   <div class="row">
       <div class="col-md-8">
@@ -21,12 +19,12 @@
                       <div class="ml-md-auto mt-3 mt-md-0" style="width: 145px;">
                           <div class="input-group carts-input-group">
                               <div class="input-group-prepend">
-                                  <button type="button"
+                                  <button type="button" (click)="decreamentCounter(i)"
                                       class="btn btn-brand-light text-primary-light material-icons text-base-size">remove</button>
                               </div>
-                              <input type="text" class="form-control" value="{{counter[i]}}">{{counter[i]}}
+                              <input type="text" class="form-control" value="{{counter[i]}}">
                               <div class="input-group-append">
-                                  <button type="button"
+                                  <button type="button" (click)="increamentCounter(i)"
                                       class="btn btn-brand-light text-primary-light material-icons text-base-size">add</button>
                               </div>
                           </div>
@@ -37,7 +35,7 @@
               <div
                   class="price ml-md-auto align-items-center py-3 justify-content-end d-flex flex-md-row-reverse">
                   <a href="#" class="btn d-none d-md-block"><span class="material-icons">delete_outline</span></a>
-                  <span class="h5 mb-0 mr-md-3">NT$ 900</span>
+                  <span class="h5 mb-0 mr-md-3">{{product.price*counter[i] | currency:'TWD'}}</span>
               </div>
           </div>
 
@@ -47,15 +45,15 @@
               <h1 class="h4 text-center p-md-3 border-bottom">訂單摘要</h1>
               <div class="d-flex justify-content-between mb-2">
                   <span>小計</span>
-                  <span>NT$ 2700</span>
+                  <span>{{getTotal() | currency:'TWD'}}</span>
               </div>
               <div class="d-flex justify-content-between mb-3">
                   <span>運費</span>
-                  <span>NT$ 300</span>
+                  <span>{{getFee() | currency:'TWD'}}</span>
               </div>
               <div class="d-flex justify-content-between">
                   <strong>總計:</strong>
-                  <strong>NT $3000</strong>
+                  <strong>{{getFee() + getTotal() | currency:'TWD'}}</strong>
               </div>
           </div>
           <a href="checkout.html" class="btn btn-lg btn-block" style="background-color: #FFE180;
