@@ -18,43 +18,63 @@ export class ProductsComponent implements OnInit {
 
   selectedType : string ;
   countOfAllProducts : number ;
-  countOfDailyProducts: number ;
-  countOfHotProducts: number ;
-  countOfNewProducts: number ;
+  countOfDailyProducts : number ;
+  countOfHotProducts : number ;
+  countOfNewProducts : number ;
 
   totalPage : number ;
   constructor( private productService: ProductService,
         private cartService: CartService) { }
 
   ngOnInit(): void {
-
+    this.products = [];
     this.selectedType = 'all' ;
 
     this.productService.getProducts().
-      subscribe( products => this.products = products);
+      subscribe( products => {
+        this.products = products ;
+        this.countOfAllProducts = this.products.length ;
+        this.countOfDailyProducts = this.products
+          .filter( product => product.type.includes('daily')).length ;
+        this.countOfHotProducts = this.products
+          .filter( product => product.type.includes('hot')).length ;
+        this.countOfNewProducts = this.products
+          .filter( product => product.type.includes('new')).length ;
+          this.productsOfType = this.products ;
 
-    this.countOfAllProducts = this.products.length ;
+        if(this.products.length % 4 != 0 ) this.totalPage = Math.floor(this.products.length/4) + 1 ;
+        else this.totalPage = Math.floor(this.products.length/4) ;
 
-    this.countOfDailyProducts = this.products
-    .filter( product => product.type.includes('daily')).length ;
+        this.currentPage = 1 ;
 
-    this.countOfHotProducts = this.products
-    .filter( product => product.type.includes('hot')).length ;
+        if( this.totalPage == 1)
+          this.productsForPage = this.productsOfType.slice(0, this.productsOfType.length );
+        else
+          this.productsForPage = this.productsOfType.slice(0, 4) ;
+      });
 
-    this.countOfNewProducts = this.products
-    .filter( product => product.type.includes('new')).length ;
+    // this.countOfAllProducts = this.products.length ;
 
-    this.productsOfType = this.products ;
+    // this.countOfDailyProducts = this.products
+    // .filter( product => product.type.includes('daily')).length ;
 
-    if(this.products.length % 4 != 0 ) this.totalPage = Math.floor(this.products.length/4) + 1 ;
-    else this.totalPage = Math.floor(this.products.length/4) ;
+    // this.countOfHotProducts = this.products
+    // .filter( product => product.type.includes('hot')).length ;
 
-    this.currentPage = 1 ;
+    // this.countOfNewProducts = this.products
+    // .filter( product => product.type.includes('new')).length ;
 
-    if( this.totalPage == 1)
-      this.productsForPage = this.productsOfType.slice(0, this.productsOfType.length );
-    else
-      this.productsForPage = this.productsOfType.slice(0, 4) ;
+    // this.productsOfType = this.products ;
+
+    // if(this.products.length % 4 != 0 ) this.totalPage = Math.floor(this.products.length/4) + 1 ;
+    // else this.totalPage = Math.floor(this.products.length/4) ;
+
+    // this.currentPage = 1 ;
+
+    // if( this.totalPage == 1)
+    //   this.productsForPage = this.productsOfType.slice(0, this.productsOfType.length );
+    // else
+    //   this.productsForPage = this.productsOfType.slice(0, 4) ;
   }
 
   onSelect(type: string): void {
@@ -65,8 +85,9 @@ export class ProductsComponent implements OnInit {
     // access products of the specific type
     if( type == 'all') this.productsOfType = this.products ;
     else {
-      this.productService.getProductsByType(type)
-        .subscribe( products => this.productsOfType = products ) ;
+      //this.productService.getProductsByType(type)
+      //  .subscribe( products => this.productsOfType = products ) ;
+      this.productsOfType = this.getProductsByType( type );
     }
 
     // refresh display panel
@@ -81,6 +102,15 @@ export class ProductsComponent implements OnInit {
       this.productsForPage = this.productsOfType.slice(0, 4) ;
 
 
+  }
+
+  getProductsByType( type : string ){
+
+    const products = [];
+
+    return this.products.filter( product =>
+      product.type.includes(type)
+      );
   }
 
   changePage( p : number ) {

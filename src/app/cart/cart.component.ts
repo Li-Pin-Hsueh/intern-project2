@@ -10,15 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
   products : Product[] ;
+  counter : number[] ;
+  totalPrice : number ;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.getItems();
+    this.getProducts();
+    this.counter = [].constructor(this.products.length) ;
     console.log(this.products) ;
   }
 
-  getItems() {
-    this.products = this.cartService.getItems();
+  getProducts() {
+    this.products = this.cartService.getProducts();
   }
+
+
 
 }

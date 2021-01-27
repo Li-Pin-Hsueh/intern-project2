@@ -5,17 +5,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  items = [] ;
-  itemsCount = 0 ;
+
+  products = [] ;
   constructor() { }
 
   addToCart(product) {
-    this.items.push(product);
-    this.itemsCount += 1 ;
-    console.log(this.itemsCount);
+
+    if( this.products.find( p => p.id == product.id ))
+    {
+      alert("Product have been in the cart.")
+    }
+    else {
+      this.products.push(product);
+    }
+
+    console.log(this.products.length);
   }
 
-  getItems() {
-    return this.items ;
+  getProducts() {
+    return this.products ;
   }
 }

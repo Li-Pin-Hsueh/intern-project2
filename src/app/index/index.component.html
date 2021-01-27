@@ -7,7 +7,7 @@
           <div class="col-md-10">
               <div class="row no-gutters">
                   <a href="#display" class="col-4 rectangle-image-wrap"
-                  (click)="getProductsByType('daily')" [class.active]="this.selectedType == 'daily'">
+                  (click)="getTopProducts('daily')" [class.active]="this.selectedType == 'daily'">
                       <span class="rectangle-text">本日精選</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
@@ -15,7 +15,7 @@
                       </div>
                   </a>
                   <a href="#display" class="col-4 rectangle-image-wrap"
-                  (click)="getProductsByType('hot')"  [class.active]="this.selectedType == 'hot'">
+                  (click)="getTopProducts('hot')"  [class.active]="this.selectedType == 'hot'">
                       <span class="rectangle-text">人氣推薦</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
@@ -23,7 +23,7 @@
                       </div>
                   </a>
                   <a href="#display" class="col-4 rectangle-image-wrap"
-                  (click)="getProductsByType('new')"  [class.active]="this.selectedType == 'new'">
+                  (click)="getTopProducts('new')"  [class.active]="this.selectedType == 'new'">
                       <span class="rectangle-text">新品上市</span>
                       <div class="four-sides rectangle-over zindex--1"></div>
                       <div class="rectangle-image bg-cover"
@@ -102,7 +102,7 @@
 
 <section id="display" class="container my-5 my-md-7">
   <div class="row">
-      <div class="col-md-4" *ngFor="let item of topItems">
+      <div class="col-md-4" *ngFor="let item of topProducts">
           <div class="card mb-5">
               <div class="card-img-top"
                   style="height: 315px; background-image: url( {{item.imgUrl}} );">
