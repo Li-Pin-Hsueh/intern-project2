@@ -2,22 +2,31 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { Product } from "./product";
 import { PRODUCTS } from "./mock-products";
-import { Observable, of } from 'rxjs' ;
+import { Observable, of ,throwError } from 'rxjs' ;
 // httpclient
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, retry, map } from 'rxjs/operators';
+
+// Set the http options
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json", "Authorization": "c31z" })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private productsUrl = 'api/products';  // URL to web api
+  private baseUrl = 'http://localhost:8080/';  // URL to web api
   constructor( private http: HttpClient ) { }
+
 
   getProducts( ): Observable<Product[]> {
     //return of(PRODUCTS) ;
-    return this.http.get<Product[]>(this.productsUrl) ;
+    const url = this.baseUrl + "products" ;
+    return this.http.get<Product[]>(url, {responseType:'json'}) ;
   }
+
 
   getTopItems( type: string ) : Observable<Product[]> {
     const topItems = [];

@@ -13,7 +13,6 @@ export class IndexComponent implements OnInit {
 
   products : Product[];
   topProducts : Product[];
-
   selectedType = 'daily'
 
   constructor(private productService: ProductService,

@@ -32,15 +32,16 @@ export class ProductsComponent implements OnInit {
 
     this.productService.getProducts().
       subscribe( products => {
+        console.dir(products);
         this.products = products ;
         this.countOfAllProducts = this.products.length ;
         this.countOfDailyProducts = this.products
-          .filter( product => product.type.includes('daily')).length ;
+           .filter( product => product.type.includes('daily')).length ;
         this.countOfHotProducts = this.products
-          .filter( product => product.type.includes('hot')).length ;
+           .filter( product => product.type.includes('hot')).length ;
         this.countOfNewProducts = this.products
-          .filter( product => product.type.includes('new')).length ;
-          this.productsOfType = this.products ;
+           .filter( product => product.type.includes('new')).length ;
+        this.productsOfType = this.products ;
 
         if(this.products.length % 4 != 0 ) this.totalPage = Math.floor(this.products.length/4) + 1 ;
         else this.totalPage = Math.floor(this.products.length/4) ;

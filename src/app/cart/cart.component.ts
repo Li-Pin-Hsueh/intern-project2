@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
 
   products : Product[] ;
   counter : number[] ;
+  hidden : boolean[] ;
   totalPrice : number ;
   constructor(private cartService: CartService) { }
 
@@ -24,6 +25,7 @@ export class CartComponent implements OnInit {
   getProducts() {
     this.products = this.cartService.getProducts();
     this.counter = [].constructor(this.products.length).fill(0);
+    this.hidden = [].constructor(this.products.length).fill(false);
   }
 
   increamentCounter( index : number) {
@@ -49,6 +51,11 @@ export class CartComponent implements OnInit {
       fee = 600 ;
 
     return fee ;
+  }
+
+  onDelete( index : number ) {
+    this.products.splice(index, 1);
+    this.counter.splice(index, 1);
   }
 
 
