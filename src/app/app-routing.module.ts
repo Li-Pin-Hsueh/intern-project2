@@ -1,3 +1,4 @@
+import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,7 +10,9 @@ const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'products', component: ProductsComponent},
   { path: 'cart', component: CartComponent},
-  //{ path: 'cart/checkout', component:IndexComponent}
+  { path: 'cart/checkout', component:CheckoutComponent},
+  { path: 'cart/checkout-2', component:CheckoutComponent},
+
 
 ];
 

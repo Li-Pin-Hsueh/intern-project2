@@ -1,0 +1,96 @@
+<section class="container my-lg-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()" class="bg-primary text-white p-3">
+        <div class="form-row mb-3">
+          <div class="col-6">
+            <span class="h1">運送</span>
+          </div>
+          <div class="col-6"></div>
+        </div>
+        <div class="form-row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="lastname" class="h4">姓氏</label>
+              <input type="text" class="form-control form-control-lg" id="lastname" placeholder="王" formControlName="lastName">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="firstname" class="h4">名</label>
+              <input type="text" class="form-control form-control-lg" id="firstname" placeholder="小明" formControlName="firstName">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="h4">電話</label>
+          <input type="text" class="form-control form-control-lg" id="phone" placeholder="0912-345-678" formControlName="phoneNumber">
+        </div>
+        <label for="city" class="h4">地址</label>
+        <div class="form-row">
+          <div class="col-6">
+            <div class="form-group">
+              <select id="city" class="form-control form-control-lg" formControlName="city">
+                <option value="高雄市">高雄市</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <select name id="city" class="form-control form-control-lg" formControlName="dist">
+                <option value="新興區">新興區</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control form-control-lg" placeholder="幸福路520號" formControlName="address">
+        </div>
+        <button routerLink="../checkout-2" class="btn btn-yellow btn-lg btn-block" type="button" [disabled]="!profileForm.valid" (click)="onSubmit()">下一步</button>
+      </form>
+
+    </div>
+    <!--Products Details-->
+    <div class="col-lg-4 d-none d-lg-block text-primary-light">
+      <div class="card mb-3">
+        <div class="card-header text-center bg-primary-lighter">
+          <div class="h3">訂單摘要</div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-2">
+            <span>小計</span>
+            <span>{{getPrice()}}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>運費</span>
+            <span>{{ getTansportFee() }}</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="h4">總計</span>
+            <strong class="h4">{{ getTotalPrice() }}</strong>
+          </div>
+        </div>
+      </div>
+      <div class="card border-primary-lighter">
+        <div class="card-header text-center bg-primary-lighter">
+          <div class="h3">購物清單</div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex mt-3" *ngFor="let product of products ; let i = index">
+            <div class="cart-image cart-image-sm mr-3"
+              style="background-image: url( {{ product.imgUrl }} )">
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-fill mr-lg-4 text-primary-light">
+                <span class="h5">{{ product.name }} ({{ counter[i]}})</span><br>
+                <span>{{ product.price | currency:'TWD' }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   counter : number[] ;
   hidden : boolean[] ;
   totalPrice : number ;
+  fee = 700 ;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -49,13 +50,21 @@ export class CartComponent implements OnInit {
       fee = 300 ;
     else if( this.getTotal() > 500 )
       fee = 600 ;
+    else if( this.getTotal() == 0 )
+      fee = 0 ;
 
+    this.fee = fee ;
     return fee ;
   }
 
   onDelete( index : number ) {
     this.products.splice(index, 1);
     this.counter.splice(index, 1);
+  }
+
+  sendData() {
+    // send data to checkout service
+    this.cartService.getCart(this.products, this.counter, this.fee) ;
   }
 
 

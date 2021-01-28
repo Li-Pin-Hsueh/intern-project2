@@ -1,4 +1,3 @@
-import { PRODUCTS } from './../mock-products';
 import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
 import { Product } from './../product';
@@ -46,7 +45,7 @@ export class IndexComponent implements OnInit {
     }
 
 
-    console.log(this.topProducts) ;
+    //console.log(this.topProducts) ;
   }
 
   addToCart(product) {
