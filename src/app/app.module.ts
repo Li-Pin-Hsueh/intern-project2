@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService } from './in-memory-data.service';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CreditcardComponent } from './creditcard/creditcard.component';
+//import { LoginComponent } from './login/login.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,6 +25,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ProductsComponent,
     CartComponent,
     CheckoutComponent,
+    CreditcardComponent,
+  //  LoginComponent,
+  //  DashboardComponent,
   ],
   imports: [
     BrowserModule,
