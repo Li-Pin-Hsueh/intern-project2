@@ -1,3 +1,5 @@
+import { DashboardProductsComponent } from './dashboard-products/dashboard-products.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +15,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'cart/checkout', component:CheckoutComponent},
   { path: 'cart/checkout-1', component:CreditcardComponent},
-  //{ path: 'cart/checkout-2', component:EmailComponent},
+  { path: 'dashboard', component:DashboardComponent},
+  { path: 'dashboard/dashboard-products', component:DashboardProductsComponent},
   //{ path: 'cart/succes', component:succesComponent}
 ];
 

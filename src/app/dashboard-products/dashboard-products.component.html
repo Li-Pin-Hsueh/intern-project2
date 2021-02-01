@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+
 </head>
 
 <body>
 
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+    <nav class="navbar navbar-dark top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Sweet Taste</a>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
@@ -213,36 +213,57 @@
 
 
 
-                <h2>Section title</h2>
+                <h2>Producst</h2>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Inventory</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>ipsum</td>
-                                <td>dolor</td>
-                                <td>sit</td>
+                            <tr *ngFor="let product of products ; let i = index">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.name}}</td>
+                                <td>{{ product.price}}</td>
+                                <td>{{ product.inventory}}</td>
+                                <button class="btn d-none d-md-block" *ngIf="ifDelete" (click)="postDelete(product.id, i)"><span
+                                  class="material-icons">delete_outline</span></button>
                             </tr>
-                            <tr>
-                                <td>1,002</td>
-                                <td>amet</td>
-                                <td>consectetur</td>
-                                <td>adipiscing</td>
-                                <td>elit</td>
-                            </tr>
+
 
                         </tbody>
                     </table>
+                </div>
+                <button (click)="addEvent()">新增</button>
+                <button (click)="onDelete()">刪除</button>
+                <button>修改</button>
+                <button *ngIf="ifDelete" (click)="doneDelete()">完成</button>
+
+                <div class="table-responsive" *ngIf="ifAdd">
+                  <br>
+                  <form [formGroup] = "addForm" (ngSubmit)="onSubmit()" class="bg-primary text-white p-3">
+                    <div class="form-group">
+                      <label for="name" class="h4">商品名稱</label>
+                      <input type="text" class="form-control form-control-lg"  placeholder="" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="name" class="h4">商品售價</label>
+                      <input type="text" class="form-control form-control-lg"  placeholder="" formControlName="price">
+                    </div>
+                    <div class="form-group">
+                      <label for="name" class="h4">商品存貨量</label>
+                      <input type="text" class="form-control form-control-lg"  placeholder="" formControlName="inventory">
+                    </div>
+
+                    <button routerLink="../dashboard-products" class="btn btn-yellow btn-lg btn-block" type="button" [disabled]="!addForm.valid" (click)="onSubmit()">下一步</button>
+
+                  </form>
+
                 </div>
             </main>
         </div>

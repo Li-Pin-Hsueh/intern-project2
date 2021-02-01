@@ -92,6 +92,7 @@ export class CartService {
       (response) => console.log(response),
       (error) => console.log(error)
     )
+    console.log(data);
   }
 
 
